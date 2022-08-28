@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void allSubsets(string str, string curr="", int index = 0) {
+void allSubsets(string &str, string curr="", int index = 0) {
 
     if(index == str.length()) {
         cout<<curr<<" ";
