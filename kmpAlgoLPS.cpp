@@ -9,11 +9,30 @@ void printArray(vector<int>& arr) {
     cout<<endl;
 }
 
-void fillLPS(string& str) {     // Original LPS of KMP Algorithm
-
+void fillLPS(string& str, int* lps) {     // Original LPS of KMP Algorithm
+    int m = str.length();
+    int len=0;
+    lps[0] = 0;
+    int i=1;
+    while(i<m) {
+        if(str[i] == str[len]) {
+            len++;
+            lps[i]=len;
+            i++;
+        }
+        else {
+            if(len == 0) {
+                lps[i] = 0;
+                i++;
+            }
+            else {
+                len = lps[len-1];
+            }
+        }
+    }
 }
 
-int longPropPreSuff(string& str, int n) {   // helper function
+int longPropPreSuff(string& str, int n) {   // helper function for naive solution
     for(int len=n-1; len>0; --len) {
         bool flag = true;
         for(int i=0; i<len; ++i) {
@@ -65,6 +84,13 @@ int main() {
     int lps[str.length()];
     fillLPSNaive(str, lps);
     for(auto i: lps) {
+        cout<<i<<' ';
+    }
+    cout<<endl;
+
+    int lps1[str.length()];
+    fillLPS(str, lps1);
+    for(auto i: lps1) {
         cout<<i<<' ';
     }
     cout<<endl;
