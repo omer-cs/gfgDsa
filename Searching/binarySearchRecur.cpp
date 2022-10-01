@@ -27,7 +27,7 @@ int main() {
     int target;
     cin>>target;
 
-    int index = binarySearchRecur(arr, target, 0, n);
+    int index = binarySearchRecur(arr, target, 0, n-1);
     if(index != -1) {
         cout<<"Found at Index : "<<index<<endl;
     }
